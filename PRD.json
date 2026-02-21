@@ -1,6 +1,6 @@
 {
   "project": "website",
-  "plan": "/library/plans/planning/website-v1.md",
+  "plan": "/Users/lloyd/agentic-library/plans/in-progress/website-v1.md",
   "created": "2026-02-21",
   "tasks": [
     {
@@ -14,17 +14,9 @@
       "verification": "npm run build passes with zero errors; gh repo view shows the repo",
       "depends_on": [],
       "context": {
-        "rules": [
-          "nextjs-app-router.md",
-          "git-workflow.md",
-          "typescript-strict.md"
-        ],
-        "mcps": [
-          "github"
-        ],
-        "references": [
-          "/library/lessons/2026-02-21-e2e-test-bitcoin-ticker.md"
-        ]
+        "rules": ["nextjs-app-router.md", "git-workflow.md", "typescript-strict.md"],
+        "mcps": ["github"],
+        "references": ["/library/lessons/2026-02-21-e2e-test-bitcoin-ticker.md"]
       },
       "passes": false
     },
@@ -37,15 +29,9 @@
       "effort": "S",
       "desk_required": false,
       "verification": "npm run build passes; toggling theme switches between light and dark",
-      "depends_on": [
-        "T1.1"
-      ],
+      "depends_on": ["T1.1"],
       "context": {
-        "rules": [
-          "nextjs-app-router.md",
-          "frontend.md",
-          "typescript-strict.md"
-        ],
+        "rules": ["nextjs-app-router.md", "frontend.md", "typescript-strict.md"],
         "mcps": [],
         "references": []
       },
@@ -54,22 +40,15 @@
     {
       "id": "T2.2",
       "step": 2,
-      "title": "Build the landing page with hero, features, and footer",
+      "title": "Build landing page with hero, features, and footer",
       "description": "Project: ~/projects/website\nFramework: Next.js 15 (App Router), React 19, Tailwind CSS 4\n\nReplace the contents of /Users/lloyd/projects/website/src/app/page.tsx with a clean,\nmodern landing page. This is a Server Component (no \"use client\" needed for the page itself).\n\nImport the ThemeToggle component from \"@/components/theme-toggle\" and place it in the\ntop-right corner of the header/nav area.\n\nSTRUCTURE:\n\n1. HEADER / NAV BAR:\n   - Sticky top nav with backdrop blur (bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm)\n   - Left: Site name \"Website\" in bold\n   - Right: ThemeToggle component\n   - Full width with max-w-6xl mx-auto px-6 for content centering\n   - Border bottom: border-b border-gray-200 dark:border-gray-800\n\n2. HERO SECTION:\n   - Large centered text section with generous padding (py-24 md:py-32)\n   - Headline: \"Build Something Amazing\" — text-5xl md:text-6xl font-bold\n   - Subheadline: \"A modern website built with Next.js and Tailwind CSS.\n     Fast, responsive, and ready for anything.\" — text-xl text-gray-600 dark:text-gray-400, max-w-2xl mx-auto\n   - Two CTA buttons side by side:\n     Button 1 (primary): \"Get Started\" — bg-black dark:bg-white text-white dark:text-black px-8 py-3 rounded-full font-medium hover:opacity-90\n     Button 2 (secondary): \"Learn More\" — border border-gray-300 dark:border-gray-700 px-8 py-3 rounded-full font-medium hover:bg-gray-100 dark:hover:bg-gray-900\n   - Both buttons are just anchor links (href=\"#features\" and href=\"#about\") for now\n   - Text alignment: text-center\n\n3. FEATURES SECTION (id=\"features\"):\n   - Section heading: \"Features\" — text-3xl font-bold text-center mb-12\n   - Responsive grid: grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8\n   - 3 feature cards, each with:\n     - Container: p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900\n     - Icon: Use a simple emoji or text icon (e.g., ⚡ 🎨 🚀) in a 48px circle background\n     - Title: text-xl font-semibold mb-2\n     - Description: text-gray-600 dark:text-gray-400\n   - Feature 1: ⚡ \"Lightning Fast\" — \"Built on Next.js 15 with automatic static optimization and edge rendering for blazing fast load times.\"\n   - Feature 2: 🎨 \"Beautiful Design\" — \"Crafted with Tailwind CSS for a clean, modern aesthetic that looks great on every device.\"\n   - Feature 3: 🚀 \"Ready to Ship\" — \"From development to production in minutes. Deploy to Vercel with zero configuration.\"\n   - Section padding: py-20 px-6, max-w-6xl mx-auto\n\n4. FOOTER:\n   - Border top: border-t border-gray-200 dark:border-gray-800\n   - Padding: py-8 px-6\n   - Content centered, max-w-6xl mx-auto\n   - Left: \"© 2026 Website. All rights reserved.\" — text-sm text-gray-500\n   - Right: Links \"GitHub\" and \"Vercel\" — text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-300\n   - Layout: flex flex-col md:flex-row justify-between items-center gap-4\n\nSTYLING NOTES:\n- Use Tailwind utility classes ONLY (no custom CSS)\n- Mobile-first: base styles for mobile, add md: and lg: prefixes for larger screens\n- Dark mode: use dark: prefix for all dark-mode-specific styles\n- Colors: Use gray scale (gray-50 through gray-950) for neutral tones\n- Body background: bg-white dark:bg-gray-950\n- Body text: text-gray-900 dark:text-gray-100\n\nIMPORTANT: This page should be a React Server Component. Only the ThemeToggle\nimport is a client component. Do NOT add \"use client\" to page.tsx.\n\nTest: npm run build must pass with no errors.",
       "executor": "claude-code",
       "effort": "M",
       "desk_required": false,
       "verification": "npm run build passes; page renders hero with headline, 3 feature cards, and footer",
-      "depends_on": [
-        "T2.1"
-      ],
+      "depends_on": ["T2.1"],
       "context": {
-        "rules": [
-          "frontend.md",
-          "nextjs-app-router.md",
-          "tailwind-responsive.md",
-          "typescript-strict.md"
-        ],
+        "rules": ["frontend.md", "nextjs-app-router.md", "tailwind-responsive.md", "typescript-strict.md"],
         "mcps": [],
         "references": []
       },
@@ -84,14 +63,9 @@
       "effort": "S",
       "desk_required": false,
       "verification": "npm run build passes; view page source shows correct meta tags",
-      "depends_on": [
-        "T2.1"
-      ],
+      "depends_on": ["T2.1"],
       "context": {
-        "rules": [
-          "nextjs-app-router.md",
-          "frontend.md"
-        ],
+        "rules": ["nextjs-app-router.md", "frontend.md"],
         "mcps": [],
         "references": []
       },
@@ -100,24 +74,16 @@
     {
       "id": "T2.4",
       "step": 2,
-      "title": "Git commit the website",
+      "title": "Git commit and push the website",
       "description": "Project: ~/projects/website\n\n1. Verify build passes first:\n   cd ~/projects/website\n   npm run build\n\n2. Stage all changed files:\n   git add src/components/theme-provider.tsx src/components/theme-toggle.tsx src/app/page.tsx src/app/layout.tsx package.json package-lock.json\n\n3. Also stage any other changed files (check with git status first):\n   git status\n   (Add any other relevant files that were modified)\n\n4. Commit:\n   git commit -m \"feat: add landing page with hero, features, footer, and dark mode\"\n\n5. Push:\n   git push origin main\n\n6. Verify:\n   git status (should be clean)\n   git log --oneline -1 (should show the commit)\n\nTest: git status must show clean working directory after push.",
       "executor": "claude-code",
       "effort": "S",
       "desk_required": false,
       "verification": "git log --oneline -1 shows the commit; git status is clean; GitHub repo is up to date",
-      "depends_on": [
-        "T2.1",
-        "T2.2",
-        "T2.3"
-      ],
+      "depends_on": ["T2.1", "T2.2", "T2.3"],
       "context": {
-        "rules": [
-          "git-workflow.md"
-        ],
-        "mcps": [
-          "github"
-        ],
+        "rules": ["git-workflow.md"],
+        "mcps": ["github"],
         "references": []
       },
       "passes": false
@@ -131,19 +97,11 @@
       "effort": "S",
       "desk_required": false,
       "verification": "Visit the production URL in a browser — page loads with hero section visible",
-      "depends_on": [
-        "T2.4"
-      ],
+      "depends_on": ["T2.4"],
       "context": {
-        "rules": [
-          "shell-scripting.md"
-        ],
-        "mcps": [
-          "vercel"
-        ],
-        "references": [
-          "/library/lessons/2026-02-21-e2e-test-bitcoin-ticker.md"
-        ]
+        "rules": ["shell-scripting.md"],
+        "mcps": ["vercel"],
+        "references": ["/library/lessons/2026-02-21-e2e-test-bitcoin-ticker.md"]
       },
       "passes": false
     },
@@ -156,9 +114,7 @@
       "effort": "S",
       "desk_required": true,
       "verification": "All checklist items pass",
-      "depends_on": [
-        "T3.1"
-      ],
+      "depends_on": ["T3.1"],
       "context": {
         "rules": [],
         "mcps": [],
