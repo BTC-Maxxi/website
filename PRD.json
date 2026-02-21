@@ -101,4 +101,70 @@
       "id": "T2.4",
       "step": 2,
       "title": "Git commit the website",
-      "description": "Project: ~/projects/website\n\n1. Verify build passes first:\n   cd ~/projects/website\n   npm run build\n\n2. Stage all changed files:\n   git add src/components/theme-provider.tsx src/components/theme-toggle.tsx src/app/page.tsx src/app/layout.tsx package.json package-lock.json\n\n3. Also stage any other changed files (check with git status first):\n   git status\n   (Add any other relevant files that were modified)\n\n4. Commit:\n   git commit -m \"feat: add landing page with hero, features, footer, and dark mode\"\n\n5. Push:\n   git push origin main\n\n6. Verify:\n   git status (
+      "description": "Project: ~/projects/website\n\n1. Verify build passes first:\n   cd ~/projects/website\n   npm run build\n\n2. Stage all changed files:\n   git add src/components/theme-provider.tsx src/components/theme-toggle.tsx src/app/page.tsx src/app/layout.tsx package.json package-lock.json\n\n3. Also stage any other changed files (check with git status first):\n   git status\n   (Add any other relevant files that were modified)\n\n4. Commit:\n   git commit -m \"feat: add landing page with hero, features, footer, and dark mode\"\n\n5. Push:\n   git push origin main\n\n6. Verify:\n   git status (should be clean)\n   git log --oneline -1 (should show the commit)\n\nTest: git status must show clean working directory after push.",
+      "executor": "claude-code",
+      "effort": "S",
+      "desk_required": false,
+      "verification": "git log --oneline -1 shows the commit; git status is clean; GitHub repo is up to date",
+      "depends_on": [
+        "T2.1",
+        "T2.2",
+        "T2.3"
+      ],
+      "context": {
+        "rules": [
+          "git-workflow.md"
+        ],
+        "mcps": [
+          "github"
+        ],
+        "references": []
+      },
+      "passes": false
+    },
+    {
+      "id": "T3.1",
+      "step": 3,
+      "title": "Deploy to Vercel",
+      "description": "Project: ~/projects/website\n\n1. Deploy to Vercel production:\n   cd ~/projects/website\n   npx vercel --prod --yes\n\n2. Note the production URL from the output.\n\n3. Verify the deployment by checking the URL is accessible:\n   curl -s -o /dev/null -w \"%{http_code}\" <PRODUCTION_URL>\n   (Should return 200)\n\nTest: Production URL returns HTTP 200 and page content includes \"Build Something Amazing\".",
+      "executor": "claude-code",
+      "effort": "S",
+      "desk_required": false,
+      "verification": "Visit the production URL in a browser — page loads with hero section visible",
+      "depends_on": [
+        "T2.4"
+      ],
+      "context": {
+        "rules": [
+          "shell-scripting.md"
+        ],
+        "mcps": [
+          "vercel"
+        ],
+        "references": [
+          "/library/lessons/2026-02-21-e2e-test-bitcoin-ticker.md"
+        ]
+      },
+      "passes": false
+    },
+    {
+      "id": "T3.2",
+      "step": 3,
+      "title": "Smoke test the production site",
+      "description": "Manual smoke test checklist on the production Vercel URL:\n\n[ ] Page loads without errors\n[ ] Hero section: \"Build Something Amazing\" headline visible\n[ ] Hero section: Two CTA buttons visible (\"Get Started\", \"Learn More\")\n[ ] Features section: 3 feature cards visible (Lightning Fast, Beautiful Design, Ready to Ship)\n[ ] Footer: Copyright text and links visible\n[ ] Dark mode: Toggle switches theme (click sun/moon icon)\n[ ] Dark mode: Refresh page — theme preference persists\n[ ] Mobile: Resize to 375px width — content stacks vertically, readable\n[ ] Desktop: Full width — features in 3-column grid\n[ ] Performance: Open DevTools > Lighthouse > run audit > performance score ≥ 90",
+      "executor": "human",
+      "effort": "S",
+      "desk_required": true,
+      "verification": "All checklist items pass",
+      "depends_on": [
+        "T3.1"
+      ],
+      "context": {
+        "rules": [],
+        "mcps": [],
+        "references": []
+      },
+      "passes": false
+    }
+  ]
+}
